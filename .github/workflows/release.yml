@@ -1,10 +1,10 @@
-name: Build uv for Debian
+name: Build TigerBeetle for Debian
 
 on:
   workflow_dispatch:
     inputs:
-      uv_version:
-        description: The version of uv to build.
+      tigerbeetle_version:
+        description: The version of TigerBeetle to build.
         type: string
         required: true
       build_version:
@@ -12,45 +12,40 @@ on:
         type: string
         required: true
       architecture:
-        description: Architecture to build (amd64, arm64, armel, armhf, ppc64el, s390x, riscv64, or 'all' for all architectures)
+        description: Architecture to build (amd64, arm64, or 'all' for all architectures)
         type: choice
         default: 'all'
         options:
           - 'all'
           - 'amd64'
           - 'arm64'
-          - 'armel'
-          - 'armhf'
-          - 'ppc64el'
-          - 's390x'
-          - 'riscv64'
 
 permissions:
   contents: write
 
 jobs:
-  build-uv:
+  build-tigerbeetle:
     name: Build
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout uv-debian
+      - name: Checkout tigerbeetle-debian
         uses: actions/checkout@v4
 
-      - name: Build uv
-        run: ./build.sh ${{ inputs.uv_version }} ${{ inputs.build_version }} ${{ inputs.architecture }}
-      
+      - name: Build TigerBeetle
+        run: ./build.sh ${{ inputs.tigerbeetle_version }} ${{ inputs.build_version }} ${{ inputs.architecture }}
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: artifact
-          path: uv_*.deb
+          path: tigerbeetle_*.deb
 
 
-  release-uv:
-    name: (Draft-)Release uv for Debian
+  release-tigerbeetle:
+    name: (Draft-)Release TigerBeetle for Debian
     if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    needs: build-uv
+    needs: build-tigerbeetle
     steps:
       - name: Download All Artifacts
         uses: actions/download-artifact@v4
@@ -61,7 +56,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           draft: true
-          files: uv_*.deb
-          name: ${{ inputs.uv_version }}+${{ inputs.build_version }}
+          files: tigerbeetle_*.deb
+          name: ${{ inputs.tigerbeetle_version }}+${{ inputs.build_version }}
           tag_name: ${{ env.RELEASE_TAG }}
           fail_on_unmatched_files: true
