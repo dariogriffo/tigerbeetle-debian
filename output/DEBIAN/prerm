@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+    remove|upgrade|deconfigure)
+        # Stop and disable the service if it's running
+        if [ -d /run/systemd/system ]; then
+            if systemctl is-active --quiet tigerbeetle.service; then
+                systemctl stop tigerbeetle.service >/dev/null || true
+            fi
+            if systemctl is-enabled --quiet tigerbeetle.service; then
+                systemctl disable tigerbeetle.service >/dev/null || true
+            fi
+        fi
+        ;;
+
+    failed-upgrade)
+        ;;
+
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+exit 0
+

@@ -1,0 +1,9 @@
+Section: database
+Priority: optional
+Maintainer: Dario Griffo <dariogriffo@gmail.com>
+Homepage: https://github.com/tigerbeetle/tigerbeetle
+Package: tigerbeetle
+Version: TIGERBEETLE_VERSION-BUILD_VERSION+DIST
+Architecture: SUPPORTED_ARCHITECTURES
+Description: A distributed financial accounting database designed for mission critical safety and performance.
+
