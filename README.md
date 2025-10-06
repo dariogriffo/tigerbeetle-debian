@@ -1,23 +1,23 @@
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/dariogriffo/uv-debian/total)
-![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/dariogriffo/uv-debian/latest/total)
-![GitHub Release](https://img.shields.io/github/v/release/dariogriffo/uv-debian)
-![GitHub Release Date](https://img.shields.io/github/release-date/dariogriffo/uv-debian)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/dariogriffo/tigerbeetle-debian/total)
+![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/dariogriffo/tigerbeetle-debian/latest/total)
+![GitHub Release](https://img.shields.io/github/v/release/dariogriffo/tigerbeetle-debian)
+![GitHub Release Date](https://img.shields.io/github/release-date/dariogriffo/tigerbeetle-debian)
 
 <h1>
    <p align="center">
-     <a href="https://uv.org/"><img src="https://github.com/dariogriffo/uv-debian/blob/main/uv-logo.png" alt="uv Logo" width="128" style="margin-right: 20px"></a>
-     <a href="https://www.debian.org/"><img src="https://github.com/dariogriffo/uv-debian/blob/main/debian-logo.png" alt="Debian Logo" width="104" style="margin-left: 20px"></a>
-     <br>uv for Debian
+     <a href="https://tigerbeetle.com/"><img src="https://github.com/dariogriffo/tigerbeetle-debian/blob/main/tigerbeetle-logo.png" alt="tigerbeetle Logo" width="128" style="margin-right: 20px"></a>
+     <a href="https://www.debian.org/"><img src="https://github.com/dariogriffo/tigerbeetle-debian/blob/main/debian-logo.png" alt="Debian Logo" width="104" style="margin-left: 20px"></a>
+     <br>tigerbeetle for Debian
    </p>
 </h1>
 <p align="center">
- An extremely fast Python package and project manager, written in Rust.
+ The financial transactions database designed for mission critical safety and performance to power the next 30 years of [OLTP](https://docs.tigerbeetle.com/concepts/oltp).
 </p>
 
-# uv for Debian
+# tigerbeetle for Debian
 
 This repository contains build scripts to produce the _unofficial_ Debian packages
-(.deb) for [uv](https://github.com/astral-sh/uv/) hosted at [debian.griffo.io](https://debian.griffo.io)
+(.deb) for [tigerbeetle](https://github.com/tigerbeetle/tigerbeetle) hosted at [debian.griffo.io](https://debian.griffo.io)
 
 Currently supported Debian distros are:
 - Bookworm (v12)
@@ -31,14 +31,10 @@ Supported architectures:
 - amd64 (x86_64) - All distributions
 - arm64 (aarch64) - All distributions
 - armel (ARM EABI) - All distributions
-- armhf (ARM hard float) - All distributions
-- ppc64el (PowerPC 64-bit little endian) - All distributions
-- s390x (IBM System z) - All distributions
-- riscv64 (RISC-V 64-bit) - Trixie, Forky, Sid only
 
 This is an unofficial community project to provide a package that's easy to
-install on Debian. If you're looking for the uv source code, see
-[uv](https://github.com/astral-sh/uv/).
+install on Debian. If you're looking for the tigerbeetle source code, see
+[tigerbeetle](https://github.com/tigerbeetle/tigerbeetle).
 
 ## Install/Update
 
@@ -47,13 +43,13 @@ install on Debian. If you're looking for the uv source code, see
 ```sh
 curl -sS https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/debian.griffo.io.gpg
 echo "deb https://debian.griffo.io//apt $(lsb_release -sc 2>/dev/null) main" | sudo tee /etc/apt/sources.list.d/debian.griffo.io.list
-sudo apt install -y uv
+sudo apt install -y tigerbeetle
 ```
 
 ### Manual Installation
 
 1. Download the .deb package for your Debian version available on
-   the [Releases](https://github.com/dariogriffo/uv-debian/releases) page.
+   the [Releases](https://github.com/dariogriffo/tigerbeetle-debian/releases) page.
 2. Install the downloaded .deb package.
 
 ```sh
@@ -67,13 +63,13 @@ To update to a new version, just follow any of the installation methods above. T
 
 ### Build for single architecture
 ```sh
-./build.sh <uv_version> <build_version> <architecture>
+./build.sh <tigerbeetle_version> <build_version> <architecture>
 # Example: ./build.sh 0.8.11 1 arm64
 ```
 
 ### Build for all architectures
 ```sh
-./build.sh <uv_version> <build_version> all
+./build.sh <tigerbeetle_version> <build_version> all
 # Example: ./build.sh 0.8.11 1 all
 ```
 
@@ -85,4 +81,4 @@ To update to a new version, just follow any of the installation methods above. T
 
 ## Disclaimer
 
-- This repo is not open for issues related to uv. This repo is only for _unofficial_ Debian packaging.
+- This repo is not open for issues related to tigerbeetle. This repo is only for _unofficial_ Debian packaging.
