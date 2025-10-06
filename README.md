@@ -11,7 +11,7 @@
    </p>
 </h1>
 <p align="center">
- The financial transactions database designed for mission critical safety and performance to power the next 30 years of [OLTP](https://docs.tigerbeetle.com/concepts/oltp).
+ The financial transactions database designed for mission critical safety and performance to power the next 30 years of <a href="https://docs.tigerbeetle.com/concepts/oltp">OLTP</a>
 </p>
 
 # tigerbeetle for Debian
@@ -33,8 +33,7 @@ Supported architectures:
 - armel (ARM EABI) - All distributions
 
 This is an unofficial community project to provide a package that's easy to
-install on Debian. If you're looking for the tigerbeetle source code, see
-[tigerbeetle](https://github.com/tigerbeetle/tigerbeetle).
+install on Debian. If you're looking for the tigerbeetle source code, see [tigerbeetle](https://github.com/tigerbeetle/tigerbeetle)
 
 ## Install/Update
 
