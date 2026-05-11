@@ -48,7 +48,7 @@ build_architecture() {
 
     rm -f "${tigerbeetle_release}.zip"
 
-    declare -a arr=("jammy" "noble" "questing")
+    declare -a arr=("jammy" "noble" "questing" "resolute")
 
     for dist in "${arr[@]}"; do
         FULL_VERSION="$TIGERBEETLE_VERSION-${BUILD_VERSION}+${dist}_${build_arch}_ubu"
