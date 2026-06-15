@@ -1,0 +1,16 @@
+Source: tigerbeetle
+Section: utils
+Priority: optional
+Maintainer: Dario Griffo <dariogriffo@gmail.com>
+Build-Depends: debhelper-compat (= 13), wget, ca-certificates, unzip
+Standards-Version: 4.6.2
+Homepage: https://github.com/tigerbeetle/tigerbeetle
+Rules-Requires-Root: no
+
+Package: tigerbeetle
+Architecture: amd64 arm64
+Depends: ${misc:Depends}
+Description: TigerBeetle is a financial accounting database
+ TigerBeetle is a distributed financial accounting database designed for
+ mission-critical safety and performance to power the next 30 years of
+ financial services.

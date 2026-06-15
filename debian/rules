@@ -1,0 +1,39 @@
+#!/usr/bin/make -f
+DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+TIGERBEETLE_VERSION := $(shell dpkg-parsechangelog -S Version | sed 's/[-~].*//')
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+
+override_dh_auto_build:
+	@arch="$(DEB_HOST_ARCH)"; \
+	case "$$arch" in \
+		amd64) TB_RELEASE="tigerbeetle-x86_64-linux" ;; \
+		arm64) TB_RELEASE="tigerbeetle-aarch64-linux" ;; \
+		*) echo "Unsupported architecture: $$arch"; exit 1 ;; \
+	esac; \
+	echo "Downloading $$TB_RELEASE for $(TIGERBEETLE_VERSION)..."; \
+	wget -q "https://github.com/tigerbeetle/tigerbeetle/releases/download/$(TIGERBEETLE_VERSION)/$$TB_RELEASE.zip"; \
+	mkdir -p "$$TB_RELEASE"; \
+	unzip -j "$$TB_RELEASE.zip" -d "$$TB_RELEASE"; \
+	rm -f "$$TB_RELEASE.zip"; \
+	echo "$$TB_RELEASE" > .tb_release_name
+
+override_dh_auto_install:
+	@TB_RELEASE=$$(cat .tb_release_name); \
+	install -D -m 755 "$$TB_RELEASE/tigerbeetle" debian/tigerbeetle/usr/local/bin/tigerbeetle; \
+	install -D -m 755 "$$TB_RELEASE/tigerbeetle-pre-start.sh" debian/tigerbeetle/usr/local/bin/tigerbeetle-pre-start.sh
+
+override_dh_auto_test:
+
+override_dh_auto_clean:
+	@if [ -f .tb_release_name ]; then \
+		TB_RELEASE=$$(cat .tb_release_name); \
+		rm -rf "$$TB_RELEASE" .tb_release_name || true; \
+	fi
+
+override_dh_strip:
+
+override_dh_shlibdeps:
