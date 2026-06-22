@@ -3,19 +3,11 @@ set -euo pipefail
 
 TIGERBEETLE_VERSION=$1
 BUILD_VERSION=$2
-RELEASE_SUFFIX=${3:-}
 
 if [ -z "$TIGERBEETLE_VERSION" ] || [ -z "$BUILD_VERSION" ]; then
-    echo "Usage: $0 <tigerbeetle_version> <build_version> [release_suffix]"
+    echo "Usage: $0 <tigerbeetle_version> <build_version>"
     echo "Example: $0 0.16.58 1"
-    echo "Example: $0 0.17.7 1 1   # Upstream release tag is 0.17.7-1"
     exit 1
-fi
-
-if [ -n "$RELEASE_SUFFIX" ]; then
-    RELEASE_TAG="${TIGERBEETLE_VERSION}-${RELEASE_SUFFIX}"
-else
-    RELEASE_TAG="${TIGERBEETLE_VERSION}"
 fi
 
 PACKAGE_NAME="tigerbeetle"
@@ -27,7 +19,7 @@ echo "Creating Debian/Ubuntu source packages for tigerbeetle ${TIGERBEETLE_VERSI
 # Download upstream source tarball (shared .orig.tar.gz across all distributions)
 if [ ! -f "$ORIG_TARBALL" ]; then
     echo "Downloading upstream source from GitHub..."
-    wget -q "https://github.com/tigerbeetle/tigerbeetle/archive/refs/tags/${RELEASE_TAG}.tar.gz" -O "$ORIG_TARBALL"
+    wget -q "https://github.com/tigerbeetle/tigerbeetle/archive/refs/tags/${TIGERBEETLE_VERSION}.tar.gz" -O "$ORIG_TARBALL"
     echo "  Downloaded $ORIG_TARBALL"
 else
     echo "  Using existing $ORIG_TARBALL"

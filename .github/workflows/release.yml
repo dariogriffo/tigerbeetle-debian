@@ -56,7 +56,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends dpkg-dev devscripts wget ca-certificates
 
       - name: Build source packages
-        run: ./build_src.sh ${{ inputs.tigerbeetle_version }} ${{ inputs.build_version }} ${{ inputs.tigerbeetle_release_suffix }}
+        run: ./build_src.sh ${{ inputs.tigerbeetle_version }} ${{ inputs.build_version }}
 
       - name: Upload Source Artifacts
         uses: actions/upload-artifact@v4
