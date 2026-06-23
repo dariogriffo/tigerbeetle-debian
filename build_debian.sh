@@ -1,22 +1,13 @@
 TIGERBEETLE_VERSION=$1
 BUILD_VERSION=$2
 ARCH=${3:-amd64}  # Default to amd64 if no architecture specified
-RELEASE_SUFFIX=${4:-}
 
 if [ -z "$TIGERBEETLE_VERSION" ] || [ -z "$BUILD_VERSION" ]; then
-    echo "Usage: $0 <tigerbeetle_version> <build_version> [architecture] [release_suffix]"
+    echo "Usage: $0 <tigerbeetle_version> <build_version> [architecture]"
     echo "Example: $0 0.16.58 1 arm64"
     echo "Example: $0 0.16.58 1 all    # Build for all architectures"
-    echo "Example: $0 0.17.7 1 all 1   # Upstream release tag is 0.17.7-1"
     echo "Supported architectures: amd64, arm64, all"
     exit 1
-fi
-
-# Build the upstream release tag used in the GitHub asset URL
-if [ -n "$RELEASE_SUFFIX" ]; then
-    RELEASE_TAG="${TIGERBEETLE_VERSION}-${RELEASE_SUFFIX}"
-else
-    RELEASE_TAG="${TIGERBEETLE_VERSION}"
 fi
 
 # Function to map Debian architecture to tigerbeetle release name
@@ -54,7 +45,7 @@ build_architecture() {
     rm -f "${tigerbeetle_release}.zip" || true
 
     # Download and extract tigerbeetle binary for this architecture
-    if ! wget "https://github.com/tigerbeetle/tigerbeetle/releases/download/${RELEASE_TAG}/${tigerbeetle_release}.zip"; then
+    if ! wget "https://github.com/tigerbeetle/tigerbeetle/releases/download/${TIGERBEETLE_VERSION}/${tigerbeetle_release}.zip"; then
         echo "❌ Failed to download tigerbeetle binary for $build_arch"
         return 1
     fi
