@@ -82,15 +82,15 @@ jobs:
         with:
           name: source-artifact
 
-      - name: Publish Release Draft
+      - name: Publish Release
         uses: softprops/action-gh-release@v2
         with:
-          draft: true
+          draft: false
           files: |
             tigerbeetle_*.deb
             tigerbeetle_*.dsc
             tigerbeetle_*.orig.tar.gz
             tigerbeetle_*.debian.tar.xz
           name: ${{ inputs.tigerbeetle_version }}+${{ inputs.build_version }}
-          tag_name: ${{ env.RELEASE_TAG }}
+          tag_name: ${{ inputs.tigerbeetle_version }}+${{ inputs.build_version }}
           fail_on_unmatched_files: true
