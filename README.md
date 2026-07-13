@@ -37,6 +37,8 @@ install on Debian. If you're looking for the tigerbeetle source code, see [tiger
 
 ## Install/Update
 
+📖 **Step-by-step install guide:** [Debian](https://debian.griffo.io/install-latest-tigerbeetle-in-debian.html) · [Ubuntu](https://debian.griffo.io/install-latest-tigerbeetle-in-ubuntu.html)
+
 ### The Debian way
 
 ```sh
