@@ -20,7 +20,7 @@ This repository contains build scripts to produce the _unofficial_ Debian packag
 (.deb) for [tigerbeetle](https://github.com/tigerbeetle/tigerbeetle) hosted at [deb.griffo.io](https://deb.griffo.io)
 
 <p align="center">
-⭐⭐⭐ Love using tigerbeetle on Debian? Show your support by starring this repo or [subscribing](https://buy.stripe.com/aFa28q8hr0lRdlm4a2enS01) — access to this repository requires a yearly subscription. ⭐⭐⭐
+⭐⭐⭐ Love using tigerbeetle on Debian? Show your support by starring this repo or [subscribing](https://buy.stripe.com/aFa28q8hr0lRdlm4a2enS01) — from 1 October 2026, apt access requires a yearly subscription. ⭐⭐⭐
 </p>
 
 Currently supported Debian distros are:
@@ -44,6 +44,11 @@ install on Debian. If you're looking for the tigerbeetle source code, see [tiger
 📖 **Step-by-step install guide:** [Debian](https://deb.griffo.io/install-latest-tigerbeetle-in-debian.html) · [Ubuntu](https://deb.griffo.io/install-latest-tigerbeetle-in-ubuntu.html)
 
 ### The Debian way
+
+> ⚠️ **From 1 October 2026, apt access requires a yearly subscription**
+> ([deb.griffo.io](https://deb.griffo.io)). To use this tool for free, download
+> the .deb from the [Releases](https://github.com/dariogriffo/tigerbeetle-debian/releases) page
+> and install it manually (see below).
 
 ```sh
 sudo install -d -m 0755 /etc/apt/keyrings
